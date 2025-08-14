@@ -52,24 +52,24 @@ pipeline {
           if grep -qiE 'flake8|ruff' requirements.txt; then
             echo "Running linters..."
             if python - <<'PY'
-import importlib, sys
-try:
-  importlib.import_module('flake8')
-  sys.exit(0)
-except ImportError:
-  sys.exit(1)
-PY
+                import importlib, sys
+                try:
+                  importlib.import_module('flake8')
+                  sys.exit(0)
+                except ImportError:
+                  sys.exit(1)
+                PY
             then
               flake8 || true
             fi
             if python - <<'PY'
-import importlib, sys
-try:
-  importlib.import_module('ruff')
-  sys.exit(0)
-except ImportError:
-  sys.exit(1)
-PY
+              import importlib, sys
+              try:
+                importlib.import_module('ruff')
+                sys.exit(0)
+              except ImportError:
+                sys.exit(1)
+              PY
             then
               ruff check . || true
             fi
