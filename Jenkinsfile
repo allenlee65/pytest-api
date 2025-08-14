@@ -14,6 +14,9 @@ pipeline {
     VENV_DIR = '.venv'
     PIP_CACHE_DIR = "${WORKSPACE}/.cache/pip"
     PYTEST_ADDOPTS = '--maxfail=1 -q'
+    RTM_API_TOKEN = credentials('rtm-api-token') // Credential ID for RTM API token
+    PROJECT_KEY = 'TCM'             // Replace with your RTM project key
+    RTM_URL = 'https://your-rtm-instance.com'    // Replace with your RTM instance URL
   }
 
   stages {
