@@ -103,7 +103,7 @@ pipeline {
       }
     }
   }
-  stage('Import Test Results to RTM') {
+      stage('Import Test Results to RTM') {
             steps {
                 script {
                     def testResultsZip = 'test-results.zip'
