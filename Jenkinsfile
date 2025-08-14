@@ -43,7 +43,7 @@ pipeline {
       }
     }
 
-    stage('Lint (optional)) {
+    stage('Lint (optional)') {
       when { expression { return fileExists('requirements.txt') } }
       steps {
         sh '''
