@@ -1,0 +1,8 @@
+BASE_URL = "https://automationexercise.com/api"
+PRODUCTS_ENDPOINT = "/productsList"
+BRANDS_ENDPOINT = "/brandsList"
+SEARCH_PRODUCTS_ENDPOINT = "/searchProducts"
+VERIFY_LOGIN_ENDPOINT = "/verifyLogin"
+CREATE_ACCOUNT_ENDPOINT = "/createAccount"
+DELETE_ACCOUNT_ENDPOINT = "/deleteAccount"
+UPDATE_ACCOUNT_ENDPOINT = "/updateAccount"

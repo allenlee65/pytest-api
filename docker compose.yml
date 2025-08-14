@@ -1,0 +1,29 @@
+version: "3.9"
+services:
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: pytest-api:latest
+    environment:
+      # example environment variables consumed by the tests
+      BASE_URL: "https://reqres.in"
+    # If tests need network access to other services defined below, they’ll
+    # resolve them by service name on this default network.
+    depends_on:
+      # - api
+      # - db
+      []
+    # Run pytest with extra flags if needed
+    command: ["pytest", "-q", "-rA"]
+    # Mount source for rapid iteration (optional)
+    # volumes:
+    #   - ./:/app:ro
+
+  # Example dependent service (uncomment and customize)
+  # api:
+  #   image: yourorg/your-api:latest
+  #   ports:
+  #     - "8080:8080"
+  #   environment:
+  #     SOME_CONFIG: "value"
