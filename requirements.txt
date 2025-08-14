@@ -2,3 +2,5 @@ requests
 pytest
 allure-pytest
 jsonschema
+pytest-html
+
