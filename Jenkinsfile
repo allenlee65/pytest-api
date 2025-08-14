@@ -19,7 +19,7 @@ pipeline {
 
   triggers {
     // Uncomment if you want periodic builds
-    // pollSCM('@daily')
+    pollSCM('@daily')
   }
 
   stages {
