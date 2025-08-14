@@ -51,26 +51,10 @@ pipeline {
           . "${VENV_DIR}/bin/activate"
           if grep -qiE 'flake8|ruff' requirements.txt; then
             echo "Running linters..."
-            if python - <<'PY'; then
-                import importlib, sys
-                try:
-                  importlib.import_module('flake8')
-                  sys.exit(0)
-                except ImportError:
-                  sys.exit(1)
-                PY
-            then
+            if python -c "import importlib.util, sys; sys.exit(0 if importlib.util.find_spec('flake8') else 1)"; then
               flake8 || true
             fi
-            if python - <<'PY'; then
-              import importlib, sys
-              try:
-                importlib.import_module('ruff')
-                sys.exit(0)
-              except ImportError:
-                sys.exit(1)
-              PY
-            then
+            if python -c "import importlib.util, sys; sys.exit(0 if importlib.util.find_spec('ruff') else 1)"; then
               ruff check . || true
             fi
           else
@@ -79,6 +63,7 @@ pipeline {
         '''
       }
     }
+
 
     stage('Unit Tests') {
       steps {
