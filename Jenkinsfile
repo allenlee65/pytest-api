@@ -104,8 +104,8 @@ pipeline {
     }
   }
       stage('Import Test Results to RTM') {
-            steps {
-                script {
+        steps {
+          script {
                     def testResultsZip = 'test-results.zip'
                     // Compress test result files into a ZIP
                     sh "zip -j ${testResultsZip} target/surefire-reports/*.xml"
