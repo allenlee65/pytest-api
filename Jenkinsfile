@@ -3,7 +3,6 @@ pipeline {
 
   options {
     timestamps()
-    ansiColor('xterm')
     buildDiscarder(logRotator(numToKeepStr: '20'))
     disableConcurrentBuilds()
     timeout(time: 30, unit: 'MINUTES')
@@ -23,17 +22,19 @@ pipeline {
   }
 
   stages {
+  stages {
 
     stage('Checkout') {
       steps {
-        checkout scm
-        script {
-          sh 'python3 --version || true'
-          sh 'pip3 --version || true'
+        ansiColor('xterm') {
+          checkout scm
+          script {
+            sh 'python3 --version || true'
+            sh 'pip3 --version || true'
+          }
         }
       }
     }
-
     stage('Setup Python env') {
       steps {
         sh '''
