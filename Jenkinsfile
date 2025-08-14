@@ -51,7 +51,7 @@ pipeline {
           . "${VENV_DIR}/bin/activate"
           if grep -qiE 'flake8|ruff' requirements.txt; then
             echo "Running linters..."
-            if python - <<'PY' then
+            if python - <<'PY'; then
                 import importlib, sys
                 try:
                   importlib.import_module('flake8')
@@ -62,7 +62,7 @@ pipeline {
             then
               flake8 || true
             fi
-            if python - <<'PY' then
+            if python - <<'PY'; then
               import importlib, sys
               try:
                 importlib.import_module('ruff')
