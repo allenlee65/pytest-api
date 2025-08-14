@@ -62,7 +62,7 @@ pipeline {
             then
               flake8 || true
             fi
-            if python - <<'PY'
+            if python - <<'PY' then
               import importlib, sys
               try:
                 importlib.import_module('ruff')
